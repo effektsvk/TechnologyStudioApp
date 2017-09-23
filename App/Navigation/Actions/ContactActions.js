@@ -6,6 +6,7 @@ import {
 	CONTACT_ADD,
 	CONTACT_UPDATE
 } from './types';
+import I18n from '../../i18n/i18n';
 
 export const contactsFetch = () => {
 	return (dispatch) => {
@@ -19,15 +20,15 @@ export const contactsFetch = () => {
 					break
 				case 'NETWORK_ERROR':
 					Alert.alert(
-						"Something went wrong...",
-						"Check your internet connection and try again.",
+						I18n.t('error_title'),
+						I18n.t('no_internet_connection'),
 						{ text: "OK" }
 					);
 					break
 				default:
 					Alert.alert(
-						"Something went wrong...",
-						"Please try again later.",
+						I18n.t('error_title'),
+						I18n.t('try_again_later'),
 						{ text: "OK" }
 					);
 					break

@@ -4,6 +4,7 @@ import { View, Text, ListView } from 'react-native';
 import { connect } from 'react-redux';
 import { ordersFetch } from '../Navigation/Actions';
 import OrderListItem from './OrderListItem';
+import I18n from '../i18n/i18n';
 
 class ContactDetail extends Component {
 	componentWillMount() {
@@ -35,7 +36,7 @@ class ContactDetail extends Component {
 		return (
 			<View style={containerStyle}>
 				<View style={phoneInfoStyle}>
-					<Text style={phoneTextStyle}>Phone</Text>
+					<Text style={phoneTextStyle}>{I18n.t('phone')}</Text>
 					<Text style={phoneNumberStyle}>{phone}</Text>
 				</View>
 				<View style={ordersTableStyle}>

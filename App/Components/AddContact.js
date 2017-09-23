@@ -6,6 +6,7 @@ import { contactAdd, contactUpdate } from '../Navigation/Actions';
 import { CardSection } from './CardSection';
 import { Input } from './Input';
 import { Button } from './Button';
+import I18n from '../i18n/i18n';
 
 class AddContact extends Component {
 	onButtonPress() {
@@ -20,7 +21,7 @@ class AddContact extends Component {
 			<View>
 				<CardSection>
 					<Input
-						label="Name"
+						label={I18n.t('name')}
 						placeholder="Marián Zdeno"
 						value={this.props.name}
 						onChangeText={value => this.props.contactUpdate({ prop: 'name', value })}
@@ -29,7 +30,7 @@ class AddContact extends Component {
 
 				<CardSection>
 					<Input
-						label="Phone"
+						label={I18n.t('phone')}
 						placeholder="0901000111"
 						value={this.props.phone}
 						onChangeText={value => this.props.contactUpdate({ prop: 'phone', value })}
@@ -38,7 +39,7 @@ class AddContact extends Component {
 
 				<CardSection>
 					<Button onPress={this.onButtonPress.bind(this)}>
-						Add Contact
+						{I18n.t('add_contact')}
 					</Button>
 				</CardSection>
 			</View>
