@@ -1,4 +1,5 @@
 import { create } from 'apisauce';
+import { Alert } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import {
 	CONTACTS_FETCH_SUCCESS,
@@ -12,7 +13,25 @@ export const contactsFetch = () => {
 		api
 		.get()
 		.then((response) => {
-			dispatch({ type: CONTACTS_FETCH_SUCCESS, payload: response.data });
+			switch (response.problem) {
+				case null:
+					dispatch({ type: CONTACTS_FETCH_SUCCESS, payload: response.data });
+					break
+				case 'NETWORK_ERROR':
+					Alert.alert(
+						"Something went wrong...",
+						"Check your internet connection and try again.",
+						{ text: "OK" }
+					);
+					break
+				default:
+					Alert.alert(
+						"Something went wrong...",
+						"Please try again later.",
+						{ text: "OK" }
+					);
+					break
+			}
 		});
 	};
 };
