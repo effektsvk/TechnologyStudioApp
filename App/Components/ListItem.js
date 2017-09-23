@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Text, TouchableWithoutFeedback, View, Image } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { CardSection } from './CardSection';
+import ListItemStyles from './Styles/ListItemStyles';
 
 class ListItem extends Component {
 	onRowPress() {
@@ -30,7 +31,7 @@ class ListItem extends Component {
 			nameLabelStyle,
 			numberLabelStyle,
 			textContainerStyle
-		} = styles;
+		} = ListItemStyles;
 		return (
 			<TouchableWithoutFeedback onPress={this.onRowPress.bind(this)}>
 				<View>
@@ -47,28 +48,28 @@ class ListItem extends Component {
 	}
 }
 
-const styles = {
-	containerStyle: {
-		display: 'flex',
-		flexDirection: 'row',
-		height: 70
-	},
-	imageStyle: {
-		marginTop: 5,
-		marginRight: 10,
-		marginLeft: 5,
-		width: 50,
-		height: 50
-	},
-	nameLabelStyle: {
-		fontSize: 26
-	},
-	numberLabelStyle: {
-		fontSize: 16
-	},
-	textContainerStyle: {
-		justifyContent: 'space-between'
-	}
-}
+// const styles = {
+// 	containerStyle: {
+// 		display: 'flex',
+// 		flexDirection: 'row',
+// 		height: 70
+// 	},
+// 	imageStyle: {
+// 		marginTop: 5,
+// 		marginRight: 10,
+// 		marginLeft: 5,
+// 		width: 50,
+// 		height: 50
+// 	},
+// 	nameLabelStyle: {
+// 		fontSize: 26
+// 	},
+// 	numberLabelStyle: {
+// 		fontSize: 16
+// 	},
+// 	textContainerStyle: {
+// 		justifyContent: 'space-between'
+// 	}
+// }
 
 export default ListItem;

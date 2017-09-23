@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { ordersFetch } from '../Navigation/Actions';
 import OrderListItem from './OrderListItem';
 import I18n from '../i18n/i18n';
+import ContactDetailStyles from './Styles/ContactDetailStyles';
 
 class ContactDetail extends Component {
 	componentWillMount() {
@@ -31,7 +32,7 @@ class ContactDetail extends Component {
 
 	render() {
 		const { name, phone, id } = this.props.contact;
-		const { phoneInfoStyle, phoneTextStyle, phoneNumberStyle, ordersTableStyle, containerStyle } = styles;
+		const { phoneInfoStyle, phoneTextStyle, phoneNumberStyle, ordersTableStyle, containerStyle } = ContactDetailStyles;
 
 		return (
 			<View style={containerStyle}>
@@ -49,29 +50,6 @@ class ContactDetail extends Component {
 			</View>
 		);
 	};
-};
-
-const styles = {
-	phoneInfoStyle: {
-		paddingTop: 5,
-		paddingBottom: 5,
-		paddingLeft: 10
-	},
-	phoneTextStyle: {
-		fontSize: 22,
-	},
-	phoneNumberStyle: {
-		fontSize: 18,
-	},
-	ordersTableStyle: {
-		backgroundColor: 'white',
-		flex: 1,
-	},
-	containerStyle: {
-		display: 'flex',
-		flex: 1,
-		flexDirection: 'column',
-	}
 };
 
 const mapStateToProps = state => {
