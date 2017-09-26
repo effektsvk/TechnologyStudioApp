@@ -3,6 +3,7 @@ import { Alert } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import {
 	CONTACTS_FETCH_SUCCESS,
+	CONTACTS_ERROR,
 	CONTACT_ADD,
 	CONTACT_UPDATE
 } from './types';
@@ -25,6 +26,12 @@ export const contactsFetch = () => {
 						{ text: "OK" }
 					);
 					break
+				case 'CLIENT_ERROR':
+					Alert.alert(
+						I18n.t('error_title'),
+						`${I18n.t('try_again_later')} ${I18n.t('error')}: ${response.data.error.message}`,
+						{ text: "OK" }
+					)
 				default:
 					Alert.alert(
 						I18n.t('error_title'),
