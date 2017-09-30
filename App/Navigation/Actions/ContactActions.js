@@ -19,35 +19,10 @@ export const contactUpdate = ({ prop, value }) => {
 	}
 };
 
-export const contactAdd = (name, phone) => {
+export const contactAdd = (data) => {
+	console.log(data);
 	return {
 		type: CONTACT_ADD,
-		name,
-		phone
+		data
 	}
-
-	// return (dispatch) => {
-	// 	const api = create({
-	// 		baseURL: 'https://private-36f1e-contactstest.apiary-mock.com',
-	// 		headers: {
-	// 			'Content-Type': 'application/json'
-	// 		}
-	// 	});
-	// 	const body = {
-	// 		"name": `"${name}"`,
-	// 		"phone": `"${phone}"`,
-	// 	}
-	//
-	// 	api
-	// 	.post(
-	// 		'/contacts',
-	// 		body,
-	// 		{headers: {
-	// 			'Content-Type': 'application/json'
-	// 		}}
-	// 	)
-	// 	.then(dispatch({ type: CONTACT_ADD }))
-	// 	.then(console.log)
-	//
-	// };
 };

@@ -46,8 +46,8 @@ export const contactsFetch = () => {
 	});
 };
 
-export const contactAdd = (name, phone) => {
-	console.log(name, phone);
+export const contactAdd = (data) => {
+	const { name, phone } = data;
 	const api = create({
 		baseURL: 'https://private-36f1e-contactstest.apiary-mock.com',
 		headers: {

@@ -1,4 +1,4 @@
-import { call, put, takeEvery, fork } from 'redux-saga/effects';
+import { call, put, takeEvery, fork, select } from 'redux-saga/effects';
 import { contactsFetch, contactAdd } from '../Api/contacts';
 import {
 	CONTACTS_FETCH_SUCCESS,
@@ -8,6 +8,10 @@ import {
 	CONTACT_ADD_SUCCESSFUL,
 	CONTACT_ADD_ERROR,
 } from '../Navigation/Actions/types';
+import {
+	newContactName,
+	newContactPhone
+} from '../Redux/selectors';
 
 export function* fetchAllContacts() {
 	const contacts = yield call(contactsFetch);
@@ -18,12 +22,12 @@ export function* fetchAllContacts() {
 	}
 }
 
-export function* contactAddRequest(action) {
-	console.log(action);
-	const { name, phone } = action;
-
+export function* contactAddRequest() {
+	const name = yield select(newContactName);
+	const phone = yield select(newContactPhone);
+	const data = { name, phone }
 	try {
-		yield call(contactAdd);
+		yield call(contactAdd, data);
 		yield put({ type: CONTACT_ADD_SUCCESSFUL });
 	} catch (error) {
 		console.log(error);
@@ -36,8 +40,8 @@ export function* watchFetchAllContacts() {
 	yield takeEvery(CONTACTS_FETCH_REQUEST, fetchAllContacts);
 }
 
-export function* watchContactAdd(action) {
-	yield takeEvery(CONTACT_ADD, contactAddRequest, action);
+export function* watchContactAdd() {
+	yield takeEvery(CONTACT_ADD, contactAddRequest);
 }
 
 export function* rootSaga() {

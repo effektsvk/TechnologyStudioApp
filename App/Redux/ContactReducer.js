@@ -20,7 +20,7 @@ export default (state = INITIAL_STATE, action) => {
 		case CONTACTS_FETCH_ERROR:
 			return state; // done
 		case CONTACT_ADD:
-			return INITIAL_STATE;
+			return state;
 		case CONTACT_UPDATE:
 			return { ...state, [action.payload.prop]: action.payload.value };
 		default:
