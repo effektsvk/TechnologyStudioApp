@@ -2,12 +2,12 @@ import _ from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { ListView } from 'react-native';
-import { contactsFetch } from '../Navigation/Actions';
+import { contactsFetchRequest } from '../Navigation/Actions';
 import ListItem from './ListItem';
 
 class ContactList extends Component {
 	componentWillMount() {
-		this.props.contactsFetch();
+		this.props.contactsFetchRequest();
 
 		this.createDataSource(this.props);
 	}
@@ -47,4 +47,4 @@ const mapStateToProps = state => {
 	return { contacts };
 };
 
-export default connect(mapStateToProps, { contactsFetch })(ContactList);
+export default connect(mapStateToProps, { contactsFetchRequest })(ContactList);

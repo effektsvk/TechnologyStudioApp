@@ -7,7 +7,7 @@ import { persistStore, autoRehydrate } from 'redux-persist';
 import ReduxThunk from 'redux-thunk';
 import reducers from '../Redux';
 import Router from '../Navigation/Router';
-import { helloSaga } from '../Sagas/sagas';
+import { rootSaga } from '../Sagas/sagas';
 import '../Config/ReactotronConfig';
 
 class App extends Component {
@@ -18,11 +18,11 @@ class App extends Component {
 			reducers,
 			{},
 			compose(
-				applyMiddleware(ReduxThunk, sagaMiddleware), autoRehydrate()
+				applyMiddleware(sagaMiddleware), autoRehydrate()
 			)
 		);
 
-		sagaMiddleware.run(helloSaga);
+		sagaMiddleware.run(rootSaga);
 		persistStore(store, {storage: AsyncStorage});
 
 		return(
