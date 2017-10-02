@@ -10,6 +10,7 @@ import ContactDetailStyles from './Styles/ContactDetailStyles';
 class ContactDetail extends Component {
 	componentWillMount() {
 		const { id } = this.props;
+		console.log("componentWillMount", id);
 		this.props.ordersFetch({id});
 		this.createDataSource(this.props);
 	}
@@ -53,10 +54,11 @@ class ContactDetail extends Component {
 };
 
 const mapStateToProps = state => {
-	const orders = _.map(state.orders.items, (name, uid) => {
+	const orders = _.map(state.orders, (name, uid) => {
 		return { ...name, uid };
 	});
-
+	console.log(orders);
+	console.log(state);
 	return { orders };
 };
 

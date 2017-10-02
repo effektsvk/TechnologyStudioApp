@@ -5,4 +5,5 @@ export const CONTACT_ADD = 'contact_add';
 export const CONTACT_ADD_SUCCESSFUL = 'contact_add_successful';
 export const CONTACT_ADD_ERROR = 'contact_add_error';
 export const CONTACT_UPDATE = 'contact_update';
+export const ORDERS_FETCH_REQUEST = 'orders_fetch_request';
 export const ORDERS_FETCH_SUCCESS = 'orders_fetch_success';

@@ -1,5 +1,6 @@
 import { call, put, takeEvery, fork, select } from 'redux-saga/effects';
 import { contactsFetch, contactAdd } from '../Api/contacts';
+import { ordersFetch } from '../Api/orders';
 import {
 	CONTACTS_FETCH_SUCCESS,
 	CONTACTS_FETCH_ERROR,
@@ -7,10 +8,13 @@ import {
 	CONTACT_ADD,
 	CONTACT_ADD_SUCCESSFUL,
 	CONTACT_ADD_ERROR,
+	ORDERS_FETCH_SUCCESS,
+	ORDERS_FETCH_REQUEST
 } from '../Navigation/Actions/types';
 import {
 	newContactName,
-	newContactPhone
+	newContactPhone,
+	selectedContactId
 } from '../Redux/selectors';
 
 export function* fetchAllContacts() {
@@ -33,11 +37,25 @@ export function* contactAddRequest() {
 		console.log(error);
 		yield put({ type: CONTACT_ADD_ERROR });
 	}
+}
 
+export function* fetchOrders() {
+	const id = yield select(selectedContactId);
+	console.log("selector", id);
+	try {
+		const orders = yield call(ordersFetch, id);
+		yield put({ type: ORDERS_FETCH_SUCCESS, orders });
+	} catch (error) {
+		console.log(error);
+	}
 }
 
 export function* watchFetchAllContacts() {
 	yield takeEvery(CONTACTS_FETCH_REQUEST, fetchAllContacts);
+}
+
+export function* watchFetchOrders() {
+	yield takeEvery(ORDERS_FETCH_REQUEST, fetchOrders);
 }
 
 export function* watchContactAdd() {
@@ -47,4 +65,5 @@ export function* watchContactAdd() {
 export function* rootSaga() {
 	yield fork(watchFetchAllContacts);
 	yield fork(watchContactAdd);
+	yield fork(watchFetchOrders);
 }
