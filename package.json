@@ -4,20 +4,23 @@
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "test": "jest"
+    "test": "jest",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "dependencies": {
     "apisauce": "^0.14.1",
-    "lodash": "^4.17.4",
-    "react": "16.0.0-alpha.12",
+    "lodash": "^4.17.5",
+    "react": "16.0.0",
     "react-native": "0.54.0",
     "react-native-i18n": "^2.0.6",
-    "react-native-router-flux": "^4.0.0-beta.21",
+    "react-native-router-flux": "^4.0.3",
     "react-redux": "^5.0.6",
     "redux": "^3.7.2",
     "redux-persist": "^4.9.1",
     "redux-saga": "^0.15.6",
-    "redux-thunk": "^2.2.0"
+    "redux-thunk": "^2.2.0",
+    "snyk": "^1.103.3"
   },
   "devDependencies": {
     "babel-jest": "21.0.2",
@@ -27,5 +30,6 @@
   },
   "jest": {
     "preset": "react-native"
-  }
+  },
+  "snyk": true
 }
